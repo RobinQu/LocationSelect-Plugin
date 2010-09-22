@@ -195,10 +195,9 @@ com.elfvision.DEBUG = true;
                     //if the request is runned by a html local file, we cannot judge its destiny by status code, as it always returns status 0.
                     debug("JSON is successfully retrived according to ", config);
                     if (config.callback) {
-                        //var data = jsonParse(this.responseText);
                         debug("about to parse json");
-                        //var data = JSON.parse(this.responseText);
-                        var data = eval("(" + request.responseText + ")");
+                        var data = JSON.parse(request.responseText);
+                        //var data = eval("(" + request.responseText + ")");
                         debug("parsed ", data);
                         config.callback.call(this, data);
                     }
@@ -601,9 +600,10 @@ com.elfvision.DEBUG = true;
     /*
 		finnally we wrap up all parts
 		config {
-			list : [DOMElement,...]
+			element : [DOMElement,...]
 			detectGeoLocation : Boolean
 			listHelper : ListHelper Object
+			detector ： Function
 		}
 	*/
     LocationSelect = function(config) {
@@ -623,11 +623,14 @@ com.elfvision.DEBUG = true;
             //callback after data feteched
             debug("exec fetech callback");
             that.selectGroup.init();
+
+			if (that.detectGeoLocation) {
+	            that.detector();
+	        }
+			
         });
 
-        if (this.detectGeoLocation) {
-            this.detector();
-        }
+        
 
     };
 
@@ -822,3 +825,21 @@ it's worthwhile.
     com.elfvision.ajax.getScript = getScript;
 
 })();
+
+if(jQuery) {
+	
+	$.LocationSelect = {
+		build : function(user_config) {
+			var config = user_config, instance;
+			config.elements = this.get();
+			instance = new com.elfvision.kit.LocationSelect(user_config);
+			$.LocationSelect.all[config.name] = instance;
+			return this;
+		}
+	};
+	
+	$.LocationSelect.all = {};
+	
+	$.fn.LocationSelect = $.LocationSelect.build;
+	
+}
