@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en-US" debug=true>
+<head>
+	<meta charset="UTF-8" >
+	
+	<title>com.elfvision.kit.LocationSelect</title>
+	<style>
+		select {
+			display : none;
+		}
+	</style>
+	<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="json2.js"></script>
+	<script type="text/javascript" src="LocationSelect.js"></script>
+	
+	<script type="text/javascript">
+		/*global com, jsonParse */
+		var ls;
+		$(function() {
+			ls = new com.elfvision.kit.LocationSelect({
+				labels :["请选择一个省份或直辖市", "请选择一个城市", "请选择一个区"],
+				elements : $("select").get()
+			});
+		});
+		
+		
+	</script>
+</head>
+<body>
+	<select name="province" id="level0"></select>
+	<select name="city" id="level1"></select>
+	<select name="district" id="level2"></select>
+</body>
+</html>
