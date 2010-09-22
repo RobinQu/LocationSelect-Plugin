@@ -42,7 +42,7 @@ com.elfvision.DEBUG = true;
                 for (; i < length; i++) {
                     args.push(arguments[i]);
                 }
-                if (console && typeof console.log == "function") {
+                if (window.console !== undefined && typeof window.console.log == "function") {
                    console.log.apply(console, args);
                 } else {
                     
