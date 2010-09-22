@@ -69,7 +69,7 @@ com.elfvision.DEBUG = true;
             func.apply(that || obj, [e]);
         },
         e;
-        if (jQuery) {
+        if(window.jQuery !== undefined) {
             jQuery(obj).bind(event, handler);
         } else {
             if (document.addEventListener) {
@@ -826,7 +826,7 @@ it's worthwhile.
 
 })();
 
-if(jQuery) {
+if(window.jQuery !== undefined) {
 	
 	$.LocationSelect = {
 		build : function(user_config) {
