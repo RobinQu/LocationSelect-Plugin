@@ -42,10 +42,10 @@ com.elfvision.DEBUG = true;
                 for (; i < length; i++) {
                     args.push(arguments[i]);
                 }
-                if (!window.console) {
-                   
+                if (console && typeof console.log == "function") {
+                   console.log.apply(console, args);
                 } else {
-                    console.debug.apply(console, args);
+                    
                 }
 
 
