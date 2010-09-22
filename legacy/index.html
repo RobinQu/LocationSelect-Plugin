@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>jquery LocationSelect plugin</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="location.js"></script>
+		<script src="http://j.maxmind.com/app/geoip.js" type="text/javascript"></script>
+		<script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAs5In0-0HWhAOT02sn4PouxTN_ou44HV0kOg00GnPU25UF-c_JhSJfeLjDAYNXJb7u8YdHu7w6opn0g&sensor=false" type="text/javascript">
+		</script>
+        <script type="text/javascript">
+            //<![CDATA[
+			$(function() {
+				$("#loc").LocationSelect();
+				$("#foo").click(function() {
+					var info = $("#loc").getLocation();
+					alert(info.province+" "+info.city+" "+info.district);
+					return false;
+				});
+			});
+            //]]>
+        </script>
+		
+    </head>
+    <body>
+    	<h1>LocationSelect - demo</h1>
+    	<p>
+    	<a href="http://pagetalks.com/2010/03/22/jquery-locationselect-plugin.html">back to documentation page</a></p>
+    	
+    	<div id="loc" ></div>
+    	<a id="foo" href="#">Tell me the address!</a>
+    	
+    </body>
+</html>
